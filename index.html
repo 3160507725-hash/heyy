@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>坛藏渝味 · 涪陵榨菜古法腌制技艺非遗影像叙事</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏺</text></svg>">
+<style>
+/* ===== 基础变量与重置 ===== */
+:root{
+  --ink:#2a2520;
+  --ink-soft:#4a4238;
+  --paper:#f6f1e7;
+  --paper-deep:#efe6d4;
+  --seal:#9a4a2c;
+  --seal-dark:#7c3a20;
+  --jade:#7a8a5a;
+  --jade-dark:#5c6b40;
+  --line:#d9cbb2;
+  --gold:#b98a3c;
+  --white:#fffdf8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Songti SC","Noto Serif SC","STSong","SimSun",serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+/* 装饰层 */
+.scrim{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(185,138,60,.06), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(122,138,90,.07), transparent 55%);
+}
+/* 页眉导航 */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;background:rgba(246,241,231,.88);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:8px;font-size:15px;letter-spacing:2px;color:var(--ink);}
+.brand .dot{width:8px;height:8px;background:var(--seal);border-radius:50%;}
+.chapnav{display:flex;gap:6px;font-size:12px;color:var(--ink-soft);}
+.chapnav a{padding:3px 8px;border-radius:4px;text-decoration:none;color:inherit;transition:.2s}
+.chapnav a:hover{background:var(--paper-deep);color:var(--seal)}
+/* 通用章节 */
+section{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:70px 22px;}
+.kicker{font-size:13px;letter-spacing:4px;color:var(--seal);margin-bottom:8px;text-transform:none}
+h2.sec-title{font-size:32px;color:var(--ink);font-weight:600;margin-bottom:14px;letter-spacing:1px}
+h2.sec-title .cn{display:block;font-size:34px}
+.sec-sub{font-size:15px;color:var(--ink-soft);max-width:640px;margin-bottom:26px}
+.divider{width:56px;height:3px;background:var(--seal);margin:18px 0 26px}
+/* 段落 */
+p.body{font-size:16px;color:var(--ink);text-align:justify;margin-bottom:16px;max-width:720px}
+p.body .hl{color:var(--seal);font-weight:600}
+/* 图片块 */
+.media{position:relative;margin:26px 0;border-radius:6px;overflow:hidden;box-shadow:0 10px 30px rgba(42,37,32,.14);border:1px solid var(--line)}
+.media img{width:100%;object-fit:cover}
+.media .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;color:#fff;
+  background:linear-gradient(transparent,rgba(20,15,10,.78));font-size:13px;letter-spacing:.5px}
+.media .tag{position:absolute;top:12px;left:12px;background:var(--seal);color:#fff;
+  font-size:11px;letter-spacing:2px;padding:3px 10px;border-radius:3px}
+/* 时间轴 */
+.timeline{position:relative;margin:30px 0;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl-item{position:relative;margin-bottom:26px;padding-left:8px}
+.tl-item::before{content:"";position:absolute;left:-28px;top:8px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--seal);box-sizing:border-box}
+.tl-item .t{font-size:14px;color:var(--seal);font-weight:600;letter-spacing:1px;margin-bottom:2px}
+.tl-item h4{font-size:17px;color:var(--ink);margin-bottom:6px}
+.tl-item p{font-size:15px;color:var(--ink-soft)}
+/* 统计数字 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0}
+.stat{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:20px 12px;text-align:center;box-shadow:0 6px 18px rgba(42,37,32,.08)}
+.stat .num{font-size:30px;font-weight:700;color:var(--seal);font-family:"Times New Roman",serif;letter-spacing:1px}
+.stat .unit{font-size:14px;color:var(--seal);font-weight:600}
+.stat .label{font-size:13px;color:var(--ink-soft);margin-top:6px;line-height:1.6}
+/* 工艺步骤卡片 */
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+.pstep{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--seal);
+  border-radius:6px;padding:18px 16px}
+.pstep .no{font-size:20px;font-weight:700;color:var(--gold);font-family:"Times New Roman",serif;display:block;margin-bottom:4px}
+.pstep h4{font-size:16px;color:var(--ink);margin-bottom:6px}
+.pstep p{font-size:14px;color:var(--ink-soft)}
+/* 传承人 */
+.masters{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.master{background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;gap:14px;box-shadow:0 6px 16px rgba(42,37,32,.08)}
+.master img{width:130px;height:auto;object-fit:cover;flex-shrink:0}
+.master .info{padding:14px 14px 14px 0}
+.master .info .role{font-size:12px;color:var(--seal);letter-spacing:1px;display:block;margin-bottom:4px}
+.master .info h4{font-size:17px;color:var(--ink);margin-bottom:6px}
+.master .info p{font-size:13px;color:var(--ink-soft);line-height:1.7}
+/* 纪录片视频卡 */
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:28px 0}
+.vcard{background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 6px 16px rgba(42,37,32,.08)}
+.vcard .media{margin:0;border:none;border-radius:0;box-shadow:none;border-bottom:1px solid var(--line)}
+.vcard .media img{aspect-ratio:16/9;object-fit:cover}
+.vcard .info{padding:14px 16px}
+.vcard .info .source{font-size:11px;color:var(--seal);letter-spacing:1px;display:block;margin-bottom:6px}
+.vcard .info h4{font-size:16px;color:var(--ink);margin-bottom:6px}
+.vcard .info p{font-size:13px;color:var(--ink-soft)}
+/* 弹窗科普 */
+.pops{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+.popbtn{background:var(--paper-deep);border:1px solid var(--line);border-radius:8px;padding:20px 16px;
+  text-align:center;cursor:pointer;transition:.25s;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.popbtn:hover{background:var(--white);border-color:var(--seal);transform:translateY(-3px);box-shadow:0 8px 20px rgba(154,74,44,.15)}
+.popbtn .icon{font-size:30px;line-height:1}
+.popbtn h4{font-size:15px;color:var(--ink)}
+.popbtn small{font-size:12px;color:var(--seal)}
+/* 提示手型 */
+.hint{text-align:center;font-size:13px;color:var(--ink-soft);margin:10px 0;letter-spacing:1px}
+/* 图表容器 */
+.chart-box{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:20px;margin:24px 0;box-shadow:0 6px 16px rgba(42,37,32,.08)}
+.chart-box h4{font-size:16px;color:var(--ink);margin-bottom:4px;text-align:center}
+.chart-box .sub{font-size:12px;color:var(--ink-soft);text-align:center;margin-bottom:10px}
+.chart-box .chart{width:100%;height:300px}
+/* 章节引子大字 */
+.chapter-hero{padding:90px 22px 40px;text-align:center;position:relative}
+.chapter-hero .zh{font-size:56px;font-weight:700;color:var(--seal);letter-spacing:10px;margin-bottom:10px}
+.chapter-hero .en{font-size:14px;letter-spacing:4px;color:var(--ink-soft)}
+.chapter-hero .line{width:70px;height:3px;background:var(--gold);margin:22px auto}
+/* 弹层 */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+  background:rgba(30,24,18,.55);padding:24px;backdrop-filter:blur(4px)}
+.modal.open{display:flex}
+.modal .box{background:var(--white);max-width:440px;width:100%;border-radius:10px;padding:28px 26px;position:relative;
+  border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal .box h3{font-size:20px;color:var(--seal);margin-bottom:10px;padding-right:30px}
+.modal .box p{font-size:15px;color:var(--ink-soft);line-height:1.9}
+.modal .close{position:absolute;top:14px;right:16px;font-size:22px;background:none;border:none;color:var(--ink-soft);cursor:pointer;line-height:1;padding:6px;font-family:inherit}
+.modal .close:hover{color:var(--seal)}
+/* 视频卡片播放按钮 */
+.playbtn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 16px;
+  background:var(--seal);color:#fff;border:none;border-radius:20px;font-size:13px;letter-spacing:1px;
+  cursor:pointer;font-family:inherit;transition:.25s}
+.playbtn:hover{background:var(--seal-dark);transform:translateY(-2px)}
+.playbtn svg{width:15px;height:15px}
+.playbtn .t{line-height:1}
+/* 视频播放弹层 */
+.vmodal{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;
+  background:rgba(20,15,10,.82);padding:24px;backdrop-filter:blur(4px)}
+.vmodal.open{display:flex}
+.vmodal .stage{background:#000;max-width:860px;width:100%;border-radius:10px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.vmodal .stage .head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#16120e;color:#eee}
+.vmodal .stage .head .tt{font-size:14px;letter-spacing:1px}
+.vmodal .stage .head .close{font-size:20px;color:#ccc;background:none;border:none;cursor:pointer;line-height:1;padding:6px;font-family:inherit}
+.vmodal .stage .head .close:hover{color:#fff}
+.vmodal .frame-wrap{position:relative;width:100%;padding-top:56.25%}
+.vmodal .frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vmodal .foot{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px;background:#16120e}
+.vmodal .foot .hint{font-size:12px;color:#aaa}
+.vmodal .foot a{font-size:13px;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold)}
+.vmodal .foot a:hover{color:#fff}
+@media(max-width:768px){
+  .vmodal{padding:12px}
+  .vmodal .frame-wrap{padding-top:56.25%}
+  .vmodal .foot .hint{font-size:11px}
+}
+/* 尾声 */
+.finale{text-align:center;padding:90px 22px 110px}
+.finale .big{font-size:44px;font-weight:700;color:var(--seal);letter-spacing:8px;margin-bottom:18px}
+.finale p{font-size:16px;color:var(--ink-soft);max-width:620px;margin:0 auto 20px}
+.finale .quote{font-size:18px;color:var(--ink);font-weight:600;margin-top:26px}
+.finale .attr{margin-top:8px;font-size:13px;color:var(--ink-soft)}
+/* 页脚 */
+footer{background:var(--paper-deep);border-top:1px solid var(--line);padding:28px 22px;text-align:center;font-size:12px;color:var(--ink-soft)}
+footer .src{margin-top:8px;line-height:2}
+footer .src a{color:var(--seal);text-decoration:none}
+/* 进度条 */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--seal);z-index:60;width:0}
+/* 移动端适配 */
+@media(max-width:768px){
+  section{padding:50px 16px}
+  .chapnav{display:none}
+  h2.sec-title{font-size:26px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .process{grid-template-columns:1fr}
+  .masters{grid-template-columns:1fr}
+  .master{flex-direction:column}
+  .master img{width:100%;height:200px;object-fit:cover}
+  .videos{grid-template-columns:1fr}
+  .pops{grid-template-columns:1fr}
+  .chapter-hero .zh{font-size:40px;letter-spacing:6px}
+  .finale .big{font-size:32px;letter-spacing:5px}
+  .chart-box .chart{height:260px}
+  .topbar{padding:8px 12px}
+  .brand{font-size:13px}
+}
+@media(max-width:420px){
+  .stats{gap:10px}
+  .stat .num{font-size:24px}
+  p.body{font-size:15px}
+}
+/* ===== 历史记忆馆 图片轮播 ===== */
+.hcarousel{position:relative;margin:20px 0;border-radius:10px;overflow:hidden;background:#1a1512}
+.hc-track{display:flex;transition:transform .5s ease}
+.hc-slide{flex:0 0 100%;position:relative}
+.hc-slide img{width:100%;height:auto;max-height:470px;object-fit:cover;display:block}
+.hc-cap{position:absolute;left:0;right:0;bottom:0;padding:28px 18px 16px;
+  background:linear-gradient(transparent,rgba(20,14,9,.86));color:#f5efe2;font-size:13px;line-height:1.7;letter-spacing:.3px}
+.hc-cap b{color:#e9c787;font-weight:600}
+.hc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.88);color:#2a2520;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:.9;transition:.2s}
+.hc-arrow:hover{opacity:1;background:#fff}
+.hc-arrow.prev{left:12px}
+.hc-arrow.next{right:12px}
+.hc-dots{position:absolute;bottom:14px;right:14px;display:flex;gap:6px;z-index:3}
+.hc-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:.2s}
+.hc-dots span.on{background:#fff;transform:scale(1.25)}
+.hc-count{position:absolute;top:12px;right:14px;z-index:3;background:rgba(0,0,0,.5);color:#fff;
+  font-size:12px;padding:3px 10px;border-radius:12px;letter-spacing:1px}
+.hc-hint{font-size:12px;color:#8a837a;margin-top:-8px;margin-bottom:6px;letter-spacing:.5px}
+/* ===== 第五章 创新实践 图片卡 ===== */
+.innov-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.innov{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;border:1px solid var(--line);background:#1a1512}
+.innov img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .4s ease}
+.innov:hover img{transform:scale(1.04)}
+.innov .mask{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(20,14,9,.9));display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:#f5efe2}
+.innov .mask h4{font-size:16px;margin-bottom:2px}
+.innov .mask small{font-size:12px;color:#e9c787;letter-spacing:.5px}
+.innov .zoom{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:flex;align-items:center;justify-content:center;color:#2a2520;opacity:0;transition:.2s}
+.innov:hover .zoom{opacity:1}
+/* ===== 第五章 规划与举措 ===== */
+.plan-list{margin:16px 0;border-top:1px dashed var(--line)}
+.plink{display:flex;align-items:center;gap:14px;padding:15px 6px;border-bottom:1px dashed var(--line);cursor:pointer;transition:.2s}
+.plink:hover{background:#f7f1e6}
+.plink .ic{flex:0 0 auto;width:42px;height:42px;border-radius:9px;background:#f3e9d8;display:flex;align-items:center;justify-content:center;color:var(--seal)}
+.plink .tx{flex:1;min-width:0}
+.plink .tx h4{font-size:15px;color:var(--ink);margin-bottom:2px}
+.plink .tx p{font-size:12.5px;color:#8a837a;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plink .go{flex:0 0 auto;color:var(--seal);font-size:15px}
+@media(max-width:768px){
+  .innov-grid{grid-template-columns:1fr}
+  .innov img{height:180px}
+}
+@media(max-width:768px){
+  .hc-slide img{max-height:360px}
+  .hc-cap{font-size:12px;padding:24px 14px 14px}
+  .hc-arrow{width:34px;height:34px}
+}
+</style>
+</head>
+<body>
+<div class="scrim" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+
+<!-- ===== 页眉导航 ===== -->
+<header class="topbar">
+  <div class="brand"><span class="dot"></span>坛藏渝味</div>
+  <nav class="chapnav">
+    <a href="#intro">引子</a><a href="#yuan">溯源</a><a href="#jiyi">技艺</a>
+    <a href="#jiangren">匠人</a><a href="#yingxiang">影像</a><a href="#huiying">回响</a>
+  </nav>
+</header>
+
+<!-- ===== 引子 · 开屏 ===== -->
+<section id="intro">
+  <div class="chapter-hero">
+    <div class="zh">坛藏渝味</div>
+    <div class="en">涪陵榨菜古法腌制技艺 · 非遗影像叙事</div>
+    <div class="line"></div>
+    <p class="body" style="margin:0 auto;max-width:680px">
+      一颗青菜头，从涪陵山间的田垄里被挖起，穿串上架、风脱水分、三腌三榨、封坛发酵——<span class="hl">历经180天自然慢酿</span>，才化作坛中那一口咸鲜爽脆的渝味。
+      这是穿越百年的手工技艺，也是一部仍在书写的<span class="hl">乡土记忆</span>。
+    </p>
+    <div class="hc-hint" style="margin:26px 0 6px">▸ 左右滑动，跟随一颗青菜头的完整旅程</div>
+    <div class="hcarousel" id="procCarousel">
+      <div class="hc-track" id="procTrack">
+        <div class="hc-slide"><img src="assets/proc1_harvest.jpg" alt="青菜头田垄收砍">
+          <div class="hc-cap"><b>① 田垄挖起</b>——冬末春初，青菜头在涪陵山间梯田成熟，菜农们将一颗颗饱满的"青疙瘩"从田垄里收砍、装筐，这是风味旅程的起点。</div></div>
+        <div class="hc-slide"><img src="assets/proc2_skewer.jpg" alt="青菜头穿串上架">
+          <div class="hc-cap"><b>② 穿串上架</b>——收好的青菜头被剥皮、削筋后，用竹篾一根根穿成串，挂上菜架，迎风而立，等待自然脱水。</div></div>
+        <div class="hc-slide"><img src="assets/img1_airdry.jpg" alt="青菜头风脱水晾晒">
+          <div class="hc-cap"><b>③ 风脱水分</b>——马武镇菜架晾晒场上，成串青菜头在长江河谷风中自然脱水十余日，失水均匀、脆度保留，这是涪陵榨菜区别于其他腌菜的核心工艺。</div></div>
+        <div class="hc-slide"><img src="assets/proc4_press.jpg" alt="三腌三榨腌制">
+          <div class="hc-cap"><b>④ 三腌三榨</b>——脱水后的青菜头分三次加盐入池腌制，层层压榨沥水，再以木杵捣实，鲜、香、嫩、脆的层次由此分明。</div></div>
+        <div class="hc-slide"><img src="assets/img3_jarring.jpg" alt="装坛封坛发酵">
+          <div class="hc-cap"><b>⑤ 封坛发酵</b>——拌入十余味香料后装坛封口，静待180天自然慢酿。坛藏岁月，方得那一口咸鲜爽脆的渝味。</div></div>
+      </div>
+      <button class="hc-arrow prev" id="procPrev" aria-label="上一张"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="hc-arrow next" id="procNext" aria-label="下一张"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="hc-count" id="procCount">1 / 5</div>
+      <div class="hc-dots" id="procDots"></div>
+    </div>
+    <p class="hint" style="margin-top:12px">▾ 请向下滑动，随长江谷风走进这坛百年渝味</p>
+  </div>
+</section>
+
+<!-- ===== 溯源 · 历史 ===== -->
+<section id="yuan">
+  <div class="kicker">第一章 · 溯源</div>
+  <h2 class="sec-title">从邱家作坊到世界名腌菜</h2>
+  <div class="divider"></div>
+  <p class="body">
+    清光绪二十五年（<span class="hl">1898年</span>），涪陵商人<span class="hl">邱寿安</span>偶然发现青菜头经盐腌榨制后风味独特，为之命名"榨菜"，意即"经盐腌榨制过的咸菜"。
+    这一偶然创造，成就了涪陵榨菜的百年历史。
+  </p>
+  <p class="body">
+    今天，涪陵榨菜与欧洲酸黄瓜、德国甜酸甘蓝并称世界<span class="hl">"三大名腌菜"</span>，涪陵也被誉为"世界榨菜之乡"。榨菜传统制作技艺先后入选重庆市与国家级非物质文化遗产名录，是巴渝农耕文明的重要活态载体。
+  </p>
+  <div class="hc-hint">▾ 左右滑动 / 点击箭头，翻阅历史记忆馆实景</div>
+  <div class="hcarousel" id="hisCarousel">
+    <div class="hc-track" id="hcTrack">
+      <div class="hc-slide"><img src="assets/img4_museum.jpg" alt="涪陵榨菜历史记忆馆外观">
+        <div class="hc-cap"><b>历史记忆馆</b>——依托创始人邱寿安故居邱家大院修缮而成，馆内保存百年前邱家作坊的两眼老窖池，是国家级非遗的活态展示窗口。</div></div>
+      <div class="hc-slide"><img src="assets/hismem_entrance.jpg" alt="历史记忆馆入口标识">
+        <div class="hc-cap"><b>馆名石墙</b>——入口主题墙镌刻馆名，配合民俗纹样与园林景观，是这座发源地的文化地标。</div></div>
+      <div class="hc-slide"><img src="assets/hismem_statue.jpg" alt="邱寿安塑像">
+        <div class="hc-cap"><b>邱寿安塑像</b>——文化廊厅内，创始人的塑像立于浮雕诗墙前，"种撒白露间，移栽寒露田"，溯源之旅由此开启。</div></div>
+      <div class="hc-slide"><img src="assets/hismem_pottery.jpg" alt="陶坛窖藏展区">
+        <div class="hc-cap"><b>窖封贮存</b>——展馆还原邱家下院的陶坛窖藏场景，排排陶缸与塑像静立，重现当年风脱水"三腌三榨"的贮存原貌。</div></div>
+      <div class="hc-slide"><img src="assets/hismem_qiujia.jpg" alt="邱家榨菜作坊旧址">
+        <div class="hc-cap"><b>邱家故居</b>——2009年邱家榨菜作坊被公布为市级文保单位，记忆馆以此为依托，打造榨菜文旅新地标。</div></div>
+      <div class="hc-slide"><img src="assets/hismem_courtyard.jpg" alt="历史记忆馆院落风光">
+        <div class="hc-cap"><b>老宅院落</b>——白墙黑瓦的复建宅院与都市天际线相映，青石板路串起上院生活区，还原邱寿安的家风与商道。</div></div>
+      <div class="hc-slide"><img src="assets/img8_qiujia.jpg" alt="邱家作坊实景">
+        <div class="hc-cap"><b>活态工坊</b>——馆内沿坡而上，由邱家榨菜作坊改造的技艺展示馆，还原传统风脱水"三腌三榨"制作流程，沉浸式可感百年手艺。</div></div>
+    </div>
+    <button class="hc-arrow prev" id="hcPrev" aria-label="上一张"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="hc-arrow next" id="hcNext" aria-label="下一张"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="hc-count" id="hcCount">1 / 7</div>
+    <div class="hc-dots" id="hcDots"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="t">1898年</div>
+      <h4>涪陵商人邱寿安命名"榨菜"</h4>
+      <p>青菜头经盐腌榨制，风味独特，得名"榨菜"，技艺由此开创。</p>
+    </div>
+    <div class="tl-item">
+      <div class="t">20世纪初</div>
+      <h4>邱家作坊壮大，远销海外</h4>
+      <p>以"三腌三榨"工艺为代表的古法技艺逐步成型，涪陵榨菜开始走出巴渝。</p>
+    </div>
+    <div class="tl-item">
+      <div class="t">2008年</div>
+      <h4>入选国家级非物质文化遗产</h4>
+      <p>涪陵榨菜传统制作技艺列入国家级非遗名录，获得官方系统性保护。</p>
+    </div>
+    <div class="tl-item">
+      <div class="t">今天</div>
+      <h4>世界三大名腌菜，香飘全球</h4>
+      <p>产品远销全球86个国家和地区，成为国民佐餐经典。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 技艺 · 风脱水与三腌三榨 ===== -->
+<section id="jiyi">
+  <div class="kicker">第二章 · 技艺</div>
+  <h2 class="sec-title">十八道工序 · 180天慢酿</h2>
+  <div class="divider"></div>
+  <p class="body">
+    涪陵榨菜传统制作技艺的核心，是<span class="hl">"风脱水"</span>与<span class="hl">"三腌三榨"</span>。
+    青菜头收购后，历经剥皮、穿串、上架脱水、下架，再经三次腌制压榨、修剪看筋、淘洗囤压、配辅料、装坛封口等<span class="hl">十八道工序</span>，
+    由匠人以"三清三洗、三腌三榨"的古法，完成<span class="hl">180天</span>的自然慢酿发酵。
+  </p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">18</div><div class="unit">道工序</div><div class="label">从原料到成品的完整流程</div></div>
+    <div class="stat"><div class="num">180</div><div class="unit">天</div><div class="label">自然慢酿发酵周期</div></div>
+    <div class="stat"><div class="num">3</div><div class="unit">腌三榨</div><div class="label">核心古法工艺"三腌三榨"</div></div>
+    <div class="stat"><div class="num">10+</div><div class="unit">味</div><div class="label">香辛辅料配方</div></div>
+  </div>
+
+  <div class="media">
+    <img src="assets/img3_jarring.jpg" alt="传统装坛工序">
+    <span class="tag">装坛压榨</span>
+    <div class="cap">国家级非遗工作室内，传承人使用传统木质压榨器具与陶制菜坛进行装坛发酵——老式压榨木架、复古腌制陶缸，直观呈现了百年前邱家作坊的原始风貌。</div>
+  </div>
+
+  <h3 style="font-size:20px;color:var(--ink);margin:24px 0 6px">从田间到坛中的十八道工序</h3>
+  <div class="hint">（可点击下方步骤卡片查看工艺细节）</div>
+  <div class="process" id="processGrid">
+    <div class="pstep" data-pop="工序：收购青菜头" data-desc="当季青菜头经严格筛选收购，原料品质是风味的起点。">
+      <span class="no">01</span><h4>收购青菜头</h4><p>原料把关，奠定风味根基</p>
+    </div>
+    <div class="pstep" data-pop="工序：剥皮" data-desc="去除菜头老皮，保留鲜嫩部分，为后续腌制做准备。">
+      <span class="no">02</span><h4>剥皮</h4><p>去粗存精，显露鲜嫩</p>
+    </div>
+    <div class="pstep" data-pop="工序：穿串上架" data-desc="用竹签将青菜头穿成串，挂上菜架，置于长江河谷自然风脱水。">
+      <span class="no">03</span><h4>穿串上架</h4><p>挂上菜架，迎风而立</p>
+    </div>
+    <div class="pstep" data-pop="工序：风脱水" data-desc="核心工艺！长江河谷自然风吹十余日，失水均匀、脆度保留，是涪陵榨菜区别于其他腌菜的关键。">
+      <span class="no">04</span><h4>风脱水</h4><p>长江谷风，自然失水</p>
+    </div>
+    <div class="pstep" data-pop="工序：第一次腌制" data-desc="加盐入池，进行第一次腌制，析出水分、奠定基础风味。">
+      <span class="no">05</span><h4>第一次腌制</h4><p>加盐入池，初显咸香</p>
+    </div>
+    <div class="pstep" data-pop="工序：起池囤压" data-desc="腌制完成后起池，通过囤压进一步排除水分。">
+      <span class="no">06</span><h4>起池囤压</h4><p>层层囤压，沥尽水分</p>
+    </div>
+    <div class="pstep" data-pop="工序：第二次腌制" data-desc="再次加盐腌制，风味逐层累积，此为"三腌三榨"中的第二腌。">
+      <span class="no">07</span><h4>第二次腌制</h4><p>再腌一重，风味累积</p>
+    </div>
+    <div class="pstep" data-pop="工序：修剪看筋" data-desc="手工修剪菜块，剔除老筋杂质，保证成品口感细腻。">
+      <span class="no">08</span><h4>修剪看筋</h4><p>精工细作，剔筋留嫩</p>
+    </div>
+    <div class="pstep" data-pop="工序：淘洗" data-desc="清水淘洗，去除多余盐分与杂质，平衡咸度。">
+      <span class="no">09</span><h4>淘洗</h4><p>清水淘洗，去繁就简</p>
+    </div>
+    <div class="pstep" data-pop="工序：囤压腌水" data-desc="第三次压榨，将腌水压出，肉质紧实，此为"三榨"之核心。">
+      <span class="no">10</span><h4>囤压腌水</h4><p>三榨压水，肉质紧实</p>
+    </div>
+    <div class="pstep" data-pop="工序：配辅料" data-desc="以花椒、茴香、山柰、八角、肉桂、甘草、辣椒等十余味佐料调配。">
+      <span class="no">11</span><h4>配辅料</h4><p>十味调和，赋予魂香</p>
+    </div>
+    <div class="pstep" data-pop="工序：装坛封口" data-desc="装入陶坛，清封坛口，套上竹篓，进入长期发酵阶段。">
+      <span class="no">12</span><h4>装坛封口</h4><p>入坛封存，静待时光</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;color:var(--ink);margin:30px 0 6px">风脱水 · 涪陵榨菜的灵魂工艺</h3>
+  <div class="media">
+    <img src="assets/video3_xiangtu.jpg" alt="青菜头丰收田野">
+    <span class="tag">田间丰收</span>
+    <div class="cap">《乡土中国》镜头下，涪陵山间青菜头丰收，菜农在田间收砍——从一颗蔬菜到香飘海外的国民佐餐，原料生态优势是风味的起点。</div>
+  </div>
+  <p class="body">
+    与多数腌菜用盐脱水不同，涪陵榨菜借助<span class="hl">长江河谷的自然风</span>完成脱水：青菜头穿串上架，在江风中日晒风干十余日，
+    失水均匀、细胞脆度完好保留，为后续"三腌三榨"与180天发酵奠定了独特的风味基础。这也是"风脱水"被称为涪陵榨菜<span class="hl">灵魂工艺</span>的原因。
+  </p>
+</section>
+
+<!-- ===== 匠人 · 传承人 ===== -->
+<section id="jiangren">
+  <div class="kicker">第三章 · 匠人</div>
+  <h2 class="sec-title">一代代掌脉师，凭手艺传薪火</h2>
+  <div class="divider"></div>
+  <p class="body">
+    涪陵榨菜的传承，靠的是<span class="hl">师徒一对一</span>的薪火相传。从1898年的榨菜发明人到今天，一代代匠人以"口尝、手摸"的掌脉师方式判断品质，
+    把"怕吃苦，腌不了榨菜"的训诫刻进手艺里。老匠人常说：<span class="hl">"下雨天切湿气重，大热天切菜有异味——你糊弄它，它就糊弄你。"</span>
+  </p>
+
+  <div class="masters">
+    <div class="master">
+      <img src="assets/img2_zhaoping.jpg" alt="市级传承人赵平">
+      <div class="info">
+        <span class="role">市级非遗传承人</span>
+        <h4>赵平</h4>
+        <p>涪陵榨菜集团一级资深经理，每年在公司内挑选技术骨干，以师徒一对一方式亲手传授传统技艺，通过"口尝、手摸"判断榨菜品质。</p>
+      </div>
+    </div>
+    <div class="master">
+      <img src="assets/img6_wanshaobi.jpg" alt="国家级传承人万绍碧">
+      <div class="info">
+        <span class="role">国家级非遗传承人</span>
+        <h4>万绍碧</h4>
+        <p>第六代传承人、辣妹子集团创始人，从选材到开坛共15道工序、历时180天的手工制作在《农广天地》中得到系统呈现，是女性传承人的代表。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="masters">
+    <div class="master">
+      <img src="assets/video4_nongguang.jpg" alt="万绍碧与徒弟">
+      <div class="info">
+        <span class="role">师徒传承现场</span>
+        <h4>万绍碧与徒弟</h4>
+        <p>《农广天地》中，万绍碧与徒弟们在竹匾上手工整理榨菜原料，从选材到开坛的完整工序在镜头下逐一呈现。</p>
+      </div>
+    </div>
+    <div class="master">
+      <img src="assets/img3_jarring.jpg" alt="装坛压榨">
+      <div class="info">
+        <span class="role">装坛压榨</span>
+        <h4>国家级非遗工作室</h4>
+        <p>传承人李文林使用传统木质压榨器具与陶制菜坛进行装坛发酵，背景墙上展示着完整工艺流程图示。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="t">第一代</div>
+      <h4>邓炳成（1898年）</h4>
+      <p>涪陵邱家湾榨菜发明人，技艺的开创者。</p>
+    </div>
+    <div class="tl-item">
+      <div class="t">国家级传承人</div>
+      <h4>万绍碧（第六代）</h4>
+      <p>第五批国家级非遗代表性传承人，辣妹子集团创始人。</p>
+    </div>
+    <div class="tl-item">
+      <div class="t">市级传承人</div>
+      <h4>赵平 · 向瑞玺</h4>
+      <p>赵平以师徒制培养骨干；向瑞玺以掌脉师出身，用现代科技改良传统工艺。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 影像 · 纪录视听 ===== -->
+<section id="yingxiang">
+  <div class="kicker">第四章 · 影像</div>
+  <h2 class="sec-title">镜头里的非遗叙事</h2>
+  <div class="divider"></div>
+  <p class="body">
+    涪陵榨菜的传统技艺，被多部权威纪录片与专题节目记录在案。这些影像以纪实手法呈现匠人双手与简单工具的配合，
+    是了解这项非遗工艺最直观、最权威的视听档案。
+  </p>
+  <div class="videos">
+    <div class="vcard">
+      <div class="media">
+        <img src="assets/video1_shouyi.jpg" alt="手艺·风吹菜香">
+        <span class="tag">央视·手艺</span>
+      </div>
+      <div class="info">
+        <span class="source">CCTV-10《探索发现·手艺》第五季 · 2015</span>
+        <h4>《风吹菜香》</h4>
+        <p>聚焦涪陵榨菜传统手工制作技艺，深入拆解"三腌三榨"工艺每一环节，记录这一偶然创造如何成就百年历史。</p>
+        <button class="playbtn" data-video="https://tv.cctv.com/v/v1/VIDE1433575296895223.html" data-title="《手艺·风吹菜香》"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="t">观看原片</span></button>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="media">
+        <img src="assets/video2_weidao.jpg" alt="味道·寻味涪陵">
+        <span class="tag">央视·味道</span>
+      </div>
+      <div class="info">
+        <span class="source">CCTV-10《味道》 · 2025</span>
+        <h4>《寻味涪陵》</h4>
+        <p>聚焦发酵三年的风脱水榨菜，解读时间如何赋予榨菜独特的醇厚香气，展现"工艺时间感"与风味形成原理。</p>
+        <button class="playbtn" data-video="https://tv.cctv.cn/2025/05/11/VIDE2wXfF9uri6jpeLS5YN7x250511.shtml" data-title="《味道·寻味涪陵》"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="t">观看原片</span></button>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="media">
+        <img src="assets/video3_xiangtu.jpg" alt="乡土中国·丰收">
+        <span class="tag">央视·乡土中国</span>
+      </div>
+      <div class="info">
+        <span class="source">CCTV-17《乡土中国》 · 2026</span>
+        <h4>《漂洋过海寻年味：涪陵榨菜香》</h4>
+        <p>以"漂洋过海寻年味"为线索，追踪涪陵榨菜从高山鲜食青菜头丰收季，到香飘海外的全球化路径。</p>
+        <button class="playbtn" data-video="https://tv.cctv.cn/2026/02/18/VIDEaxLtjuyoZ5Ogut3oxDc7260218.shtml" data-title="《乡土中国·涪陵榨菜香》"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="t">观看原片</span></button>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="media">
+        <img src="assets/video4_nongguang.jpg" alt="农广天地·万绍碧">
+        <span class="tag">央视·农广天地</span>
+      </div>
+      <div class="info">
+        <span class="source">CCTV-7《农广天地》 · 2015</span>
+        <h4>《涪陵榨菜》</h4>
+        <p>跟随国家级传承人万绍碧探秘完整制作流程，15道工序、180天手工过程系统呈现，品味川渝文化内涵。</p>
+        <button class="playbtn" data-video="https://tv.cctv.com/2015/01/16/VIDE1421415238176631.shtml" data-title="《农广天地·涪陵榨菜》"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="t">观看原片</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 回响 · 产业与科技 ===== -->
+<section id="huiying">
+  <div class="kicker">第五章 · 回响</div>
+  <h2 class="sec-title">守艺与创新，老树发新芽</h2>
+  <div class="divider"></div>
+  <p class="body">
+    今天的涪陵榨菜，既坚守"三清三洗、三腌三榨"的古法传承，也以智能科技赋能传统工艺创新。
+    从"超级工厂"到"产业大脑"，从基因组图谱到跨界潮流新品，这门百年非遗正以全新的方式走向世界。
+  </p>
+
+  <div class="stats">
+    <div class="stat"><div class="num">74.19</div><div class="unit">万亩</div><div class="label">2025年青菜头种植面积</div></div>
+    <div class="stat"><div class="num">191.11</div><div class="unit">万吨</div><div class="label">2025年青菜头总产量</div></div>
+    <div class="stat"><div class="num">165</div><div class="unit">亿元</div><div class="label">全产业链产值</div></div>
+    <div class="stat"><div class="num">379.24</div><div class="unit">亿元</div><div class="label">涪陵榨菜品牌价值</div></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">86</div><div class="unit">国</div><div class="label">产品远销全球国家和地区</div></div>
+    <div class="stat"><div class="num">60</div><div class="unit">万人</div><div class="label">带动增收致富的菜农</div></div>
+    <div class="stat"><div class="num">16</div><div class="unit">万户</div><div class="label">种植户</div></div>
+    <div class="stat"><div class="num">200</div><div class="unit">亿元</div><div class="label">2027年总产值目标</div></div>
+  </div>
+
+  <div class="media">
+    <img src="assets/img5_expo.jpg" alt="第八届涪陵榨菜产业国际博览会">
+    <span class="tag">产业博览</span>
+    <div class="cap">第八届重庆·涪陵榨菜产业国际博览会以"涪陵榨菜 香飘世界"为主题，汇聚行业专家与产业链上下游企业，系统呈现从田间到餐桌的全产业链图景。</div>
+  </div>
+
+  <div class="media">
+    <img src="assets/img7_workshop.jpg" alt="工业化清洗加工">
+    <span class="tag">现代加工</span>
+    <div class="cap">现代食品加工车间中，榨菜原料经工业化清洗加工——传统工艺与现代科技正在这里深度融合。</div>
+  </div>
+
+  <div class="pops" id="popGrid">
+    <div class="popbtn" data-pop="超级工厂" data-desc="涪陵榨菜集团"超级工厂"项目全面建成达产后，年产值可达60亿元，直接新增就业岗位1500个，辐射带动全区10万菜农稳定增收。">
+      <span class="icon"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#9a4a2c" stroke-width="1.6" aria-hidden="true"><path d="M4 20h16M6 20V8h8v12M10 20v-4M14 20v-4M6 11h8M3 8h14"/><path d="M18 8l3-2v5l-3-2z"/></svg></span><h4>超级工厂</h4><small>60亿产值 · 1500岗位</small>
+    </div>
+    <div class="popbtn" data-pop="产业大脑" data-desc="2024年9月涪陵榨菜产业大脑正式上线，以"1+1+N+1"架构贯通种植、加工、销售、监管全链条，打造"产业大脑+未来工厂"模式。">
+      <span class="icon"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#9a4a2c" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M9 10v3a3 3 0 0 0 3 3h1M9 11h3"/></svg></span><h4>产业大脑</h4><small>数字化赋能全链条</small>
+    </div>
+    <div class="popbtn" data-pop="基因组图谱" data-desc="渝东南农科院成功绘制全球首个茎瘤芥（榨菜）全基因组遗传变异图谱，覆盖全国203份种质资源，为分子育种、品质改良提供基因基础。">
+      <span class="icon"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#9a4a2c" stroke-width="1.6" aria-hidden="true"><path d="M12 3c2 3 2 6 0 9s-2 6 0 9"/><path d="M12 6c-2 2-2 4 0 6s2 4 0 6"/><path d="M5 7c4 1 4 4 0 6M19 7c-4 1-4 4 0 6"/></svg></span><h4>基因组图谱</h4><small>203份种质资源</small>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;color:var(--ink);margin:30px 0 4px">智造与出海 · 创新实践</h3>
+  <div class="hint">（点击图片可查看详情）</div>
+  <div class="innov-grid">
+    <div class="innov" data-title="智能化生产车间" data-desc="国内榨菜行业首条智能化生产线于涪陵投用：青菜头淘洗、拌料、切分到成品包装全流程智能化，数字化控制中心可自动匹配、干预修正并预警，人力成本节省一半以上，开创行业先河。">
+      <img src="assets/innov_workshop.jpg" alt="智能化生产车间">
+      <span class="zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></span>
+      <div class="mask"><h4>智能化生产车间</h4><small>行业首条智能产线</small></div>
+    </div>
+    <div class="innov" data-title="乌江榨菜智能产线" data-desc="涪陵榨菜集团的乌江榨菜智能化生产车间里，清洗、切分、拌料、灌装、灭菌一气呵成——偌大厂房几乎不见人影，一颗颗青菜头在生产线上迅速变成榨菜产品，走向千家万户。">
+      <img src="assets/innov_wujiang.jpg" alt="乌江榨菜智能化生产车间">
+      <span class="zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></span>
+      <div class="mask"><h4>乌江榨菜智能产线</h4><small>无人化智能制造</small></div>
+    </div>
+    <div class="innov" data-title="绿色智能生产基地" data-desc="乌江涪陵榨菜绿色智能化生产基地项目总投资50亿元，新建10条榨菜生产线与5条川调类酱产品生产线，配套智能物流与大数据管理，建成后年产30万吨榨菜、16.5万吨川调类酱产品，将带动百万菜农增收。">
+      <img src="assets/innov_greenbase.jpg" alt="绿色智能化生产基地">
+      <span class="zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></span>
+      <div class="mask"><h4>绿色智能生产基地</h4><small>总投资50亿 · 智能制造园区</small></div>
+    </div>
+    <div class="innov" data-title="龙头港通江达海" data-desc="涪陵龙头港，涪陵榨菜从这里沿长江出江达海。依托长江航运优势，涪陵榨菜远销全球86个国家和地区，从邱家作坊的码头走向世界餐桌，完成"一碟小菜销全球"的跨越。">
+      <img src="assets/innov_port.jpg" alt="重庆龙头港">
+      <span class="zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6M11 8v6"/></svg></span>
+      <div class="mask"><h4>龙头港 · 通江达海</h4><small>沿长江走向86国</small></div>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;color:var(--ink);margin:26px 0 4px">守艺与创新 · 关键举措</h3>
+  <div class="hint">（点击条目展开详情）</div>
+  <div class="plan-list" id="planList">
+    <div class="plink" data-title="中国榨菜城" data-desc="涪陵加快"中国榨菜城"建设，运用云计算、大数据、物联网技术建设智慧管理平台与智能化生产体系，打造集智能工艺生产、大数据管理、绿色生态与工业旅游于一体的智能制造产业园区。">
+      <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21h16M6 21V9h8v12M10 21v-5M14 21v-5M6 12h8M3 9l3-2v5M18 9l3-2v5"/></svg></span>
+      <div class="tx"><h4>中国榨菜城</h4><p>云计算 · 大数据 · 物联网，智能制造产业园区</p></div>
+      <span class="go">▸</span>
+    </div>
+    <div class="plink" data-title="减盐轻卡新赛道" data-desc="顺应健康升级趋势，乌江榨菜将品牌价值点切换为"低盐的佐餐开味菜"，入局"减盐轻卡"新赛道，从"泡面伴侣"向健康佐餐、休闲零食转型，拓展消费新场景。">
+      <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c2 2 2 4 0 6s-2 4 0 6 2 4 0 6M9 6c-2 1-2 3 0 4M15 6c2 1 2 3 0 4"/></svg></span>
+      <div class="tx"><h4>减盐轻卡新赛道</h4><p>低盐佐餐开味菜，健康化转型升级</p></div>
+      <span class="go">▸</span>
+    </div>
+    <div class="plink" data-title="多元品牌矩阵" data-desc="以榨菜为中心，向"榨菜+"、亲缘品类、川式复合调料与预制菜多元化延伸，开拓"翠小菜""开味说"等休闲零食品牌，形成四大系列100余个产品品种。">
+      <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+      <div class="tx"><h4>多元品牌矩阵</h4><p>四大系列 · 100余个产品品种</p></div>
+      <span class="go">▸</span>
+    </div>
+    <div class="plink" data-title="现代加工升级" data-desc="从2000年三峡移民迁建启动工业化改造，到引入德国全自动生产线并推动国产化，涪陵榨菜持续升级加工环节，传统工艺与现代科技在此深度融合。">
+      <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 11l7.5-4M8 13l7.5 4"/></svg></span>
+      <div class="tx"><h4>现代加工升级</h4><p>工业化改造到全线智能化，工序持续跃迁</p></div>
+      <span class="go">▸</span>
+    </div>
+  </div>
+
+  <h3 style="font-size:20px;color:var(--ink);margin:26px 0 6px">从田野到世界 · 数据透视</h3>
+  <div class="chart-box">
+    <h4>涪陵榨菜产业规模（2025—2027目标）</h4>
+    <div class="sub">单位：亿元（全产业链产值）</div>
+    <div id="chartIndustry" class="chart"></div>
+  </div>
+</section>
+
+<!-- 弹窗 -->
+<div class="modal" id="modal">
+  <div class="box">
+    <button class="close" id="modalClose" aria-label="关闭"><svg class="xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<!-- 视频播放弹层 -->
+<div class="vmodal" id="vmodal">
+  <div class="stage">
+    <div class="head">
+      <span class="tt" id="vmodalTitle"></span>
+      <button class="close" id="vmodalClose" aria-label="关闭"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="vmodalFrame" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="纪录片播放"></iframe>
+    </div>
+    <div class="foot">
+      <span class="hint">如内嵌播放器无法加载，请点击右侧链接在央视网观看</span>
+      <a id="vmodalLink" href="#" target="_blank" rel="noopener">前往央视网观看原片 ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 尾声 ===== -->
+<section class="finale" id="finale">
+  <div class="big">坛藏渝味</div>
+  <p>一坛榨菜，藏着涪陵山水的风、匠人的手与百年的时光。</p>
+  <p>从田间到舌尖，从邱家作坊到世界餐桌，这门非遗技艺仍在烟火气里新生。</p>
+  <div class="quote">"以匠心守初心，让非遗在时光中沉淀，于烟火里新生。"</div>
+  <div class="attr">—— 非遗影像叙事《坛藏渝味》</div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div>非遗影像叙事 · 《坛藏渝味》</div>
+  <div class="src">影像素材来源：
+    <a href="https://tv.cctv.com/v/v1/VIDE1433575296895223.html" target="_blank" rel="noopener">央视《手艺》</a> ·
+    <a href="https://tv.cctv.cn/2025/05/11/VIDE2wXfF9uri6jpeLS5YN7x250511.shtml" target="_blank" rel="noopener">央视《味道》</a> ·
+    <a href="https://tv.cctv.cn/2026/02/18/VIDEaxLtjuyoZ5Ogut3oxDc7260218.shtml" target="_blank" rel="noopener">央视《乡土中国》</a> ·
+    <a href="https://tv.cctv.com/2015/01/16/VIDE1421415238176631.shtml" target="_blank" rel="noopener">央视《农广天地》</a> ·
+    <a href="https://www.ihchina.cn/project_details/14641.html" target="_blank" rel="noopener">中国非物质文化遗产网</a> ·
+    <a href="http://cq.people.com.cn/n2/2026/0122/c367697-41479176.html" target="_blank" rel="noopener">人民网</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+/* ===== 数据 ===== */
+const INDUSTRY = [
+  {label:'2024年', value:150},
+  {label:'2025年', value:165},
+  {label:'2027年目标', value:200}
+];
+
+/* ===== 进度条 ===== */
+const progress = document.getElementById('progress');
+function updProgress(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (h>0? (window.scrollY/h*100) :0)+'%';
+}
+window.addEventListener('scroll', updProgress, {passive:true});
+updProgress();
+
+/* ===== 弹窗交互（工艺步骤 + 产业科普） ===== */
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalClose = document.getElementById('modalClose');
+function openModal(title, desc){
+  modalTitle.textContent = title;
+  modalDesc.textContent = desc;
+  modal.classList.add('open');
+}
+function closeModal(){ modal.classList.remove('open'); }
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+document.querySelectorAll('.pstep').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    openModal(el.dataset.pop, el.dataset.desc);
+  });
+});
+document.querySelectorAll('.popbtn').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    openModal(el.dataset.pop, el.dataset.desc);
+  });
+});
+
+/* ===== 视频播放弹层 ===== */
+const vmodal = document.getElementById('vmodal');
+const vmodalTitle = document.getElementById('vmodalTitle');
+const vmodalFrame = document.getElementById('vmodalFrame');
+const vmodalLink = document.getElementById('vmodalLink');
+const vmodalClose = document.getElementById('vmodalClose');
+function openVideo(url, title){
+  vmodalTitle.textContent = title;
+  vmodalFrame.src = url;
+  vmodalLink.href = url;
+  vmodal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo(){
+  vmodal.classList.remove('open');
+  vmodalFrame.src = '';
+  document.body.style.overflow = '';
+}
+vmodalClose.addEventListener('click', closeVideo);
+vmodal.addEventListener('click', e=>{ if(e.target===vmodal) closeVideo(); });
+document.querySelectorAll('.playbtn').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    openVideo(el.dataset.video, el.dataset.title);
+  });
+});
+/* Escape 同时关闭视频弹层 */
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); closeVideo(); } });
+
+/* ===== 第五章 创新实践 图片卡 & 规划列表 ===== */
+document.querySelectorAll('.innov').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    openModal(el.dataset.title, el.dataset.desc);
+  });
+});
+document.querySelectorAll('.plink').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    openModal(el.dataset.title, el.dataset.desc);
+  });
+});
+
+/* ===== 图片轮播（开篇工艺 & 历史记忆馆 共用） ===== */
+function initCarousel(conf){
+  const track = conf.track;
+  const prev = conf.prev;
+  const next = conf.next;
+  const count = conf.count;
+  const dots = conf.dots;
+  const slides = track.children.length;
+  let idx = 0;
+  for(let i=0;i<slides;i++){
+    const s = document.createElement('span');
+    if(i===0) s.classList.add('on');
+    s.addEventListener('click', ()=>{ go(i); });
+    dots.appendChild(s);
+  }
+  function render(){
+    track.style.transform = 'translateX(-'+(idx*100)+'%)';
+    count.textContent = (idx+1)+' / '+slides;
+    [...dots.children].forEach((d,i)=> d.classList.toggle('on', i===idx));
+  }
+  function go(i){ idx=(i+slides)%slides; render(); }
+  prev.addEventListener('click', ()=> go(idx-1));
+  next.addEventListener('click', ()=> go(idx+1));
+  let x0=null;
+  track.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    if(x0===null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if(dx < -40) go(idx+1);
+    else if(dx > 40) go(idx-1);
+    x0=null;
+  }, {passive:true});
+  render();
+}
+initCarousel({
+  track: document.getElementById('procTrack'),
+  prev: document.getElementById('procPrev'),
+  next: document.getElementById('procNext'),
+  count: document.getElementById('procCount'),
+  dots: document.getElementById('procDots')
+});
+initCarousel({
+  track: document.getElementById('hcTrack'),
+  prev: document.getElementById('hcPrev'),
+  next: document.getElementById('hcNext'),
+  count: document.getElementById('hcCount'),
+  dots: document.getElementById('hcDots')
+});
+
+/* ===== 图表 ===== */
+if(window.echarts){
+  const chart = echarts.init(document.getElementById('chartIndustry'));
+  chart.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis', backgroundColor:'#fffdf8', borderColor:'#d9cbb2', textStyle:{color:'#2a2520'}},
+    grid:{left:44, right:20, top:30, bottom:30},
+    xAxis:{type:'category', data:INDUSTRY.map(d=>d.label), axisLine:{lineStyle:{color:'#4a4238'}}, axisLabel:{color:'#4a4238', fontSize:12}},
+    yAxis:{type:'value', name:'亿元', nameTextStyle:{color:'#4a4238'}, axisLabel:{color:'#4a4238'}, splitLine:{lineStyle:{color:'#e5dcc7'}}},
+    series:[{
+      type:'bar', data:INDUSTRY.map(d=>d.value),
+      barWidth:44, itemStyle:{color:'#9a4a2c', borderRadius:[4,4,0,0]},
+      label:{show:true, position:'top', color:'#9a4a2c', fontWeight:600, fontSize:13}
+    }]
+  });
+  window.addEventListener('resize', ()=>chart.resize());
+}
+/* 无echarts时的兜底 */
+else{
+  document.getElementById('chartIndustry').innerHTML =
+    '<p style="text-align:center;padding-top:90px;color:#4a4238">图表加载失败：请联网访问以获得完整图表体验</p>';
+}
+</script>
+</body>
+</html>
+
+</body>
+</html>
